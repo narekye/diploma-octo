@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace OCTO.DAL.Common
+namespace OCTO.DAL.Core
 {
     public interface IDatabaseTransaction : IDisposable
     {
-        IDbContextTransaction Transaction { get; set; }
-
         void BeginTransaction();
 
         void RollbackTransaction();

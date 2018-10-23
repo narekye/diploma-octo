@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OCTO.DAL.Common
+namespace OCTO.DAL.Core
 {
     public class DatabaseTransaction<TDbContext> : IDatabaseTransaction where TDbContext : DbContext
     {
         protected readonly TDbContext _dbContext;
+
+        private IDbContextTransaction Transaction { get; set; }
 
         public DatabaseTransaction(TDbContext dbContext)
         {
@@ -21,8 +23,6 @@ namespace OCTO.DAL.Common
         {
             _dbContext = _dbContext ?? (_dbContext = (TDbContext)Activator.CreateInstance(typeof(TDbContext), connectionString));
         }
-
-        public IDbContextTransaction Transaction { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public async void BeginTransaction()
         {
