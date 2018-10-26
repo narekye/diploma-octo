@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OCTO.Admin.Models\OCTO.Admin.Models.csproj" />
     <ProjectReference Include="..\OCTO.BLL.Interfaces\OCTO.BLL.Interfaces.csproj" />
     <ProjectReference Include="..\OCTO.BLL.Models\OCTO.BLL.Models.csproj" />
     <ProjectReference Include="..\OCTO.Common\OCTO.Common.csproj" />

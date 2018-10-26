@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OCTO.Admin.Controllers.Core;
 using OCTO.BLL.Interfaces.Account;
-using OCTO.BLL.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OCTO.Admin.Controllers
 {
-    [ApiController, Route("api/[controller]/[action]"), Produces("application/json")]
-    public class AccountController : ControllerBase
+    public class AccountController : ApiControllerBase
     {
         private IAccountService _accountService;
 
@@ -17,10 +15,10 @@ namespace OCTO.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AccountModel>>> GetAccounts()
+        public async Task<ActionResult> GetAccounts()
         {
             var items = await _accountService.GetAccountsAsync();
-            return Ok(items);
+            return CreateResponse(items);
         }
     }
 }

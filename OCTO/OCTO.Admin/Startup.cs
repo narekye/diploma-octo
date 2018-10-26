@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using OCTO.Admin.Middlewares;
 using OCTO.Common;
 
 namespace OCTO.Admin
@@ -26,6 +27,8 @@ namespace OCTO.Admin
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseWelcomePage("/");
             app.UseMvc();
