@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OCTO.BLL.Account;
+using OCTO.BLL.Contact;
 using OCTO.BLL.Interfaces.Account;
+using OCTO.BLL.Interfaces.Contact;
 using OCTO.DAL.Models;
 using OCTO.DAL.Repositories;
 using OCTO.DAL.Repositories.Interfaces;
@@ -17,10 +19,14 @@ namespace OCTO.Common
                 o.UseSqlServer(connectionString, providerOptions => providerOptions.CommandTimeout(60));
             }, ServiceLifetime.Singleton);
 
-            services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ISalutationRepository, SalutationRepository>();
+
             services.AddTransient<ICountryRepository, CountryRepository>();
 
+            services.AddTransient<IContactRepository, ContactRepository>();
+            services.AddTransient<IContactService, ContactService>();
+
+            services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IAccountService, AccountService>();
 
             return services;

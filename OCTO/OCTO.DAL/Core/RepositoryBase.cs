@@ -9,7 +9,7 @@ namespace OCTO.DAL.Core
 {
     public abstract class RepositoryBase<TEntity, TDbContext> : DatabaseTransaction<TDbContext>, IRepositoryBase<TEntity>
         where TDbContext : DbContext
-        where TEntity : class//, IEntity
+        where TEntity : class
     {
         public RepositoryBase(TDbContext dbContext) : base(dbContext) { }
 
@@ -74,10 +74,10 @@ namespace OCTO.DAL.Core
             _dbContext.Set<TEntity>().RemoveRange(entities);
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> query)
+        public virtual async Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> filter)
         {
             var entities = _dbContext.Set<TEntity>().AsQueryable();
-            return await query.Apply(entities);
+            return await filter.Apply(entities);
         }
     }
 }
