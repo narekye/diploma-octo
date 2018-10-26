@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=tcp:den1.mssql5.gear.host;Integrated Security=false;Initial Catalog=octo;User id=octo;Password=Yj9vIx6r_~19;Encrypt=True;persist security info=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -O Models -context OctoContext -verbose -force -d

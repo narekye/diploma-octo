@@ -1,4 +1,4 @@
-﻿using OCTO.DAL.Entities;
+﻿//using OCTO.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OCTO.DAL.Core
 {
-    public interface IRepositoryBase<TEntity> : IDisposable where TEntity : class, IEntity
+    public interface IRepositoryBase<TEntity> : IDisposable where TEntity : class//, IEntity
     {
-        TEntity Add(TEntity entity);
+        void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
         void RemoveRange(IEnumerable<TEntity> entities);
         void Edit(TEntity entity);
@@ -20,5 +20,7 @@ namespace OCTO.DAL.Core
         Task<TEntity> GetByIdAsync(int id);
 
         Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null);
+
+        Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> query);
     }
 }

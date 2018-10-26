@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Salutation]
+(
+	[Id] INT NOT NULL IDENTITY(1,1),
+	[Name] VARCHAR(32) NOT NULL
+
+	CONSTRAINT [PK_Salutation] PRIMARY KEY CLUSTERED ([Id])
+)

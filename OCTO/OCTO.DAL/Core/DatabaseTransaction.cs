@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using OCTO.DAL.Entities;
+// using OCTO.DAL.Entities;
 using System;
 using System.Linq;
 using System.Text;
@@ -73,8 +73,8 @@ namespace OCTO.DAL.Core
                 var entry = ex.Entries.FirstOrDefault().Entity;
                 string entryInfo = string.Empty;
 
-                if (entry is IEntity iEntity)
-                    entryInfo = BuildInfo(entry.GetType(), iEntity.Id);
+                //if (entry is IEntity iEntity)
+                //    entryInfo = BuildInfo(entry.GetType(), iEntity.Id);
 
                 throw CreateException(nameof(DbUpdateConcurrencyException), entryInfo);
             }
@@ -84,8 +84,8 @@ namespace OCTO.DAL.Core
                 var entry = ex.Entries.First().Entity;
                 string entryInfo = string.Empty;
 
-                if (entry is IEntity iEntity)
-                    entryInfo = BuildInfo(entry.GetType(), iEntity.Id);
+                //if (entry is IEntity iEntity)
+                //    entryInfo = BuildInfo(entry.GetType(), iEntity.Id);
 
                 throw CreateException(nameof(DbUpdateException), entryInfo, GetMessageFromInnerException(ex));
             }

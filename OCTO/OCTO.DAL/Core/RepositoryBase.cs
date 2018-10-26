@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OCTO.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +9,16 @@ namespace OCTO.DAL.Core
 {
     public abstract class RepositoryBase<TEntity, TDbContext> : DatabaseTransaction<TDbContext>, IRepositoryBase<TEntity>
         where TDbContext : DbContext
-        where TEntity : class, IEntity
+        where TEntity : class//, IEntity
     {
         public RepositoryBase(TDbContext dbContext) : base(dbContext) { }
 
-        public TEntity Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentException(nameof(entity));
 
             _dbContext.Set<TEntity>().Add(entity);
-            return entity;
         }
 
         public void AddRange(IEnumerable<TEntity> entities)
@@ -74,6 +72,12 @@ namespace OCTO.DAL.Core
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _dbContext.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> query)
+        {
+            var entities = _dbContext.Set<TEntity>().AsQueryable();
+            return await query.Apply(entities);
         }
     }
 }
