@@ -24,14 +24,7 @@ namespace OCTO.DAL.Models
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:den1.mssql5.gear.host;Integrated Security=false;Initial Catalog=octo;User id=octo;Password=Yj9vIx6r_~19;Encrypt=True;persist security info=True;TrustServerCertificate=True");
-            }
-        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OCTO.BLL.Interfaces\OCTO.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\OCTO.BLL\OCTO.BLL.csproj" />
+    <ProjectReference Include="..\OCTO.DAL\OCTO.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

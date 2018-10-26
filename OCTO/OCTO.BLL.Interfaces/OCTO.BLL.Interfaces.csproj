@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OCTO.BLL.Models\OCTO.BLL.Models.csproj" />
+  </ItemGroup>
+
 </Project>

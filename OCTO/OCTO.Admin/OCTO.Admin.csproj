@@ -10,6 +10,19 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OCTO.BLL.Interfaces\OCTO.BLL.Interfaces.csproj" />
+    <ProjectReference Include="..\OCTO.BLL.Models\OCTO.BLL.Models.csproj" />
+    <ProjectReference Include="..\OCTO.Common\OCTO.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
