@@ -10,7 +10,7 @@
 	[CampaignId] INT NULL,
 	[Notes] VARCHAR(255) NULL,
 
-	CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([Id] DESC),
+	CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_Account_Country] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Country]([Id]),
 	CONSTRAINT [FK_Account_Campaign] FOREIGN KEY ([CampaignId]) REFERENCES [dbo].[Campaign]([Id])
 )

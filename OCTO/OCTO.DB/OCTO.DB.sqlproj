@@ -70,4 +70,7 @@
     <Build Include="dbo\Tables\Sector.sql" />
     <Build Include="dbo\Tables\Source.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="DbToOrigin.scmp" />
+  </ItemGroup>
 </Project>
