@@ -8,5 +8,10 @@ namespace OCTO.BLL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string AddressLine { get; set; }
+        public string Zip { get; set; }
+        public string Phone { get; set; }
+        public string Site { get; set; }
+        public string Notes { get; set; }
     }
 }

@@ -17,6 +17,17 @@ namespace OCTO.Admin
             services.ConfigureOCTOMapper();
             services.ConfigureOCTODependencies(builder.GetConnectionString("DefaultConnection"));
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", o =>
+                {
+                    o.AllowAnyOrigin();
+                    o.AllowCredentials();
+                    o.AllowAnyMethod();
+                    o.AllowAnyHeader();
+                });
+            });
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -29,7 +40,7 @@ namespace OCTO.Admin
                 app.UseDeveloperExceptionPage();
 
             app.UseMiddleware<ExceptionHandlerMiddleware>();
-
+            app.UseCors("AllowAll");
             app.UseWelcomePage("/");
             app.UseMvc();
         }
