@@ -24,9 +24,14 @@ namespace OCTO.DAL.Core
             _dbContext = _dbContext ?? (_dbContext = (TDbContext)Activator.CreateInstance(typeof(TDbContext), connectionString));
         }
 
-        public async void BeginTransaction()
+        public async Task BeginTransactionAsync()
         {
             Transaction = await _dbContext.Database.BeginTransactionAsync();
+        }
+
+        public void BeginTransaction()
+        {
+            Transaction = _dbContext.Database.BeginTransaction();
         }
 
         public void CommitTransaction()
@@ -42,6 +47,12 @@ namespace OCTO.DAL.Core
             Transaction = null;
         }
 
+        public async Task EnsureTransactionAsync()
+        {
+            if (Transaction == null)
+                await BeginTransactionAsync();
+        }
+
         public void EnsureTransaction()
         {
             if (Transaction == null)
@@ -51,7 +62,7 @@ namespace OCTO.DAL.Core
         public void RollbackTransaction()
         {
             if (Transaction != null)
-                RollbackTransaction();
+                Transaction.Rollback();
         }
 
         public async Task<int> SaveChangesAsync(bool commit = true)

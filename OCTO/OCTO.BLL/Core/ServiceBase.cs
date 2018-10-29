@@ -44,7 +44,7 @@ namespace OCTO.BLL.Core
         public void EnsureTransaction()
         {
             if (DatabaseTransaction != null)
-                DatabaseTransaction.EnsureTransaction();
+                DatabaseTransaction.EnsureTransactionAsync();
         }
 
         public void RollbackTransaction()

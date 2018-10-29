@@ -72,8 +72,6 @@ namespace OCTO.DAL.Models
                 entity.HasIndex(e => new { e.FirstName, e.LastName, e.Email, e.AccountId })
                     .HasName("IX_Contact_AccountId");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Assistant).IsUnicode(false);
 
                 entity.Property(e => e.City).IsUnicode(false);
