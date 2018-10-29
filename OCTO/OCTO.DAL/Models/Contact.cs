@@ -10,6 +10,7 @@ namespace OCTO.DAL.Models
     {
         public int Id { get; set; }
         public int SalutationId { get; set; }
+        public int AccountId { get; set; }
         [Required]
         [StringLength(64)]
         public string FirstName { get; set; }
@@ -43,6 +44,9 @@ namespace OCTO.DAL.Models
         [StringLength(64)]
         public string City { get; set; }
 
+        [ForeignKey("AccountId")]
+        [InverseProperty("Contacts")]
+        public Account Account { get; set; }
         [ForeignKey("CountryId")]
         [InverseProperty("Contacts")]
         public Country Country { get; set; }

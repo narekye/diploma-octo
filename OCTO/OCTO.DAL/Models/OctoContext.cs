@@ -24,12 +24,25 @@ namespace OCTO.DAL.Models
         public virtual DbSet<Source> Sources { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=tcp:den1.mssql5.gear.host;Integrated Security=false;Initial Catalog=octo;User id=octo;Password=Yj9vIx6r_~19;Encrypt=True;persist security info=True;TrustServerCertificate=True");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(entity =>
             {
+                entity.HasIndex(e => e.CampaignId)
+                    .HasName("IX_Account_Campaign");
+
+                entity.HasIndex(e => e.Name)
+                    .IsUnique();
+
                 entity.Property(e => e.AddressLine).IsUnicode(false);
 
                 entity.Property(e => e.Name).IsUnicode(false);
@@ -56,6 +69,9 @@ namespace OCTO.DAL.Models
 
             modelBuilder.Entity<Contact>(entity =>
             {
+                entity.HasIndex(e => new { e.FirstName, e.LastName, e.Email, e.AccountId })
+                    .HasName("IX_Contact_AccountId");
+
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Assistant).IsUnicode(false);
@@ -77,6 +93,12 @@ namespace OCTO.DAL.Models
                 entity.Property(e => e.Notes).IsUnicode(false);
 
                 entity.Property(e => e.Phone).IsUnicode(false);
+
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.Contacts)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Contact_Account");
 
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.Contacts)

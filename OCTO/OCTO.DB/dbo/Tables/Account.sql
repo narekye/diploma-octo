@@ -14,3 +14,10 @@
 	CONSTRAINT [FK_Account_Country] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Country]([Id]),
 	CONSTRAINT [FK_Account_Campaign] FOREIGN KEY ([CampaignId]) REFERENCES [dbo].[Campaign]([Id])
 )
+
+GO
+CREATE UNIQUE INDEX [IX_Account_Name] ON [dbo].[Account]([Name])
+GO
+
+CREATE NONCLUSTERED INDEX [IX_Account_Campaign] ON [dbo].[Account] ([CampaignId] ASC)
+GO

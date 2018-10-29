@@ -2,6 +2,7 @@
 (
 	[Id]			INT				NOT NULL,
 	[SalutationId]	INT				NOT NULL,
+	[AccountId]		INT				NOT NULL,
 	[FirstName]		NVARCHAR(64)	NOT NULL,
 	[MiddleName]	NVARCHAR(64)	NULL,
 	[LastName]		NVARCHAR(64)	NOT NULL,
@@ -21,5 +22,10 @@
 
 	CONSTRAINT [PK_Contact] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_Contact_Salutation] FOREIGN KEY ([SalutationId]) REFERENCES [dbo].[Salutation]([Id]),
-	CONSTRAINT [FK_Contact_City] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Country]([Id])
+	CONSTRAINT [FK_Contact_City] FOREIGN KEY ([CountryId]) REFERENCES [dbo].[Country]([Id]),
+	CONSTRAINT [FK_Contact_Account] FOREIGN KEY ([AccountId]) REFERENCES [dbo].[Account]([Id])
 )
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Contact_AccountId] ON [dbo].[Contact] ([AccountId] ASC) INCLUDE ([FirstName],[LastName], [Email])
+Go

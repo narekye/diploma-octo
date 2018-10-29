@@ -8,6 +8,11 @@ namespace OCTO.DAL.Models
     [Table("Account")]
     public partial class Account
     {
+        public Account()
+        {
+            Contacts = new HashSet<Contact>();
+        }
+
         public int Id { get; set; }
         [Required]
         [StringLength(64)]
@@ -31,5 +36,7 @@ namespace OCTO.DAL.Models
         [ForeignKey("CountryId")]
         [InverseProperty("Accounts")]
         public Country Country { get; set; }
+        [InverseProperty("Account")]
+        public ICollection<Contact> Contacts { get; set; }
     }
 }
