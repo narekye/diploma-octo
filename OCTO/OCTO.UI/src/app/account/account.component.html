@@ -1,3 +1,7 @@
-<div>
+<div class="row">
   Accounts
+  <app-account-filter (filterApplied)="onApplyFilter()"></app-account-filter>
+</div>
+<div class="row">
+  <app-account-list></app-account-list>
 </div>
