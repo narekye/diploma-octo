@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from './account.service';
+import {Observable} from 'rxjs';
+import {AccountListComponent} from './account-list/account-list.component';
 
 @Component({
   selector: 'app-account',
@@ -7,6 +9,8 @@ import {AccountService} from './account.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+
+  public accounts : Observable<object>;
 
   constructor(private accountService: AccountService) {
 
@@ -17,5 +21,6 @@ export class AccountComponent implements OnInit {
   }
 
   public onApplyFilter() {
+    this.accounts = this.accountService.getAccounts();
   }
 }

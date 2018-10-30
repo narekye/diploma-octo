@@ -3,5 +3,5 @@
   <app-account-filter (filterApplied)="onApplyFilter()"></app-account-filter>
 </div>
 <div class="row">
-  <app-account-list></app-account-list>
+  <app-account-list [accounts]="accounts | async"></app-account-list>
 </div>
