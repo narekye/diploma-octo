@@ -10,4 +10,8 @@ export class AccountService {
   public getAccounts() {
     return this.http.get(environment.octoURL + '/Account/GetAccounts');
   }
+
+  public getAccountById(id: number) {
+    return this.http.get(environment.octoURL + '/Account/GetAccountByIdAsync?accountId' + id);
+  }
 }

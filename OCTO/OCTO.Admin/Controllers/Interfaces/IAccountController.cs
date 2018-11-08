@@ -10,6 +10,6 @@ namespace OCTO.Admin.Controllers.Interfaces
         Task<ActionResult> GetAccounts();
         Task<ActionResult> GetAccountsByFilterAsync(AccountFilterModel accountFilter);
         Task<ActionResult> CreateAccountAsync(AccountModel account);
-        Task<ActionResult> GetAccountByIdAsync(int accountId);
+        //Task<ActionResult> GetAccountByIdAsync(int accountId);
     }
 }

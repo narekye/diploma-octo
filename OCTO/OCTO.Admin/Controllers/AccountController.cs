@@ -4,6 +4,7 @@ using OCTO.Admin.Controllers.Interfaces;
 using OCTO.BLL.Interfaces.Account;
 using OCTO.BLL.Models;
 using OCTO.BLL.Models.Filters;
+using System;
 using System.Threading.Tasks;
 
 namespace OCTO.Admin.Controllers
@@ -38,7 +39,7 @@ namespace OCTO.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAccountByIdAsync(int accountId)
+        public async Task<ActionResult> GetAccountByIdAsync([FromQuery] int accountId)
         {
             var account = await _accountService.GetAccountByIdAsync(accountId);
             return CreateResponse(account);

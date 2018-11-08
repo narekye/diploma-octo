@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
+import {AccountService} from '../account.service';
 
 @Component({
   selector: 'app-account-edit',
@@ -7,15 +8,33 @@ import {ActivatedRoute, Params} from '@angular/router';
 })
 export class AccountEditComponent implements OnInit {
 
-  public id: number;
+  public currentAccount;
+  private id: number;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  // get id(): number {
+  //   return this.id;
+  // }
+  //
+  // set id(value: number) {
+  //   this.id = value;
+  // }
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private accountService: AccountService) {
 
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = +params['id'];
+      console.log(this.id);
+      this.getCurrentAccount();
+    });
+  }
+
+  private getCurrentAccount() {
+    this.accountService.getAccountById(this.id).subscribe(response => {
+      console.log(response);
     });
   }
 }
