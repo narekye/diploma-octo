@@ -10,5 +10,6 @@ namespace OCTO.BLL.Interfaces.Account
     {
         Task<IEnumerable<AccountModel>> GetAccountsAsync();
         Task<IEnumerable<AccountModel>> GetAccountsAsync(AccountFilterModel accountFilterModel);
+        Task<AccountModel> GetAccountByIdAsync(int accountId);
     }
 }

@@ -21,6 +21,13 @@ namespace OCTO.BLL.Account
             _mapper = mapper;
         }
 
+        public async Task<AccountModel> GetAccountByIdAsync(int accountId)
+        {
+            var account = await _accountRepository.GetByIdAsync(accountId);
+            var accountModel = _mapper.Map<AccountModel>(account);
+            return accountModel;
+        }
+
         public async Task<IEnumerable<AccountModel>> GetAccountsAsync()
         {
             var accounts = await _accountRepository.GetAllAsync();

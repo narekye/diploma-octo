@@ -1,7 +1,10 @@
 <div class="row">
-  Accounts
   <app-account-filter (filterApplied)="onApplyFilter()"></app-account-filter>
-</div>
-<div class="row">
   <app-account-list [accounts]="accounts | async"></app-account-list>
 </div>
+
+<div class="row">
+  <router-outlet></router-outlet>
+</div>
+
+

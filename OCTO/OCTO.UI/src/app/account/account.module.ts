@@ -7,6 +7,8 @@ import {AccountDetailComponent} from './account-detail/account-detail.component'
 import {AccountListComponent} from './account-list/account-list.component';
 import {AccountItemComponent} from './account-list/account-item/account-item.component';
 import {CommonModule} from '@angular/common';
+import {AccountHeaderComponent} from './account-list/account-header/account-header.component';
+import {AccountEditComponent} from './account-edit/account-edit.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {CommonModule} from '@angular/common';
     AccountFilterComponent,
     AccountDetailComponent,
     AccountListComponent,
-    AccountItemComponent
+    AccountItemComponent,
+    AccountHeaderComponent,
+    AccountEditComponent
   ],
   providers: [AccountService],
   imports: [

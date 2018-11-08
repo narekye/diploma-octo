@@ -1,14 +1,10 @@
-<table class="table table-dark">
+<table class="table table-striped table-hover">
   <thead>
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">First</th>
-    <th scope="col">Last</th>
-    <th scope="col">Id</th>
-  </tr>
+  <tr app-account-header></tr>
   </thead>
   <tbody>
-  <tr app-account-item *ngFor="let item of accounts.Data" [id]="item"></tr>
+  <tr app-account-item *ngFor="let item of accounts?.Data" [account]="item"></tr>
   </tbody>
 </table>
+
 

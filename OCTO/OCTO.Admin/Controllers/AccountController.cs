@@ -36,5 +36,12 @@ namespace OCTO.Admin.Controllers
         {
             return CreateResponse(new object());
         }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAccountByIdAsync(int accountId)
+        {
+            var account = await _accountService.GetAccountByIdAsync(accountId);
+            return CreateResponse(account);
+        }
     }
 }
