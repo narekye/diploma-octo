@@ -2,7 +2,7 @@
   <thead>
   <tr app-account-header></tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="accounts !== null && !accounts.HasError">
   <tr app-account-item *ngFor="let item of accounts?.Data" [account]="item"></tr>
   </tbody>
 </table>
