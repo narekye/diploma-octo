@@ -1,4 +1,5 @@
-﻿using OCTO.DAL.Core;
+﻿using Microsoft.EntityFrameworkCore;
+using OCTO.DAL.Core;
 using OCTO.DAL.Models;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ namespace OCTO.DAL.Filters
 {
     public class ContactFilter : IFilter<Contact>
     {
-        public Task<IEnumerable<Contact>> Apply(IQueryable<Contact> query)
+        public async Task<IEnumerable<Contact>> Apply(IQueryable<Contact> query)
         {
-            throw new NotImplementedException();
+            return await query.ToListAsync();
         }
     }
 }

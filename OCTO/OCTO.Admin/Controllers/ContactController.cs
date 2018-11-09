@@ -1,6 +1,8 @@
-﻿using OCTO.Admin.Controllers.Core;
+﻿using Microsoft.AspNetCore.Mvc;
+using OCTO.Admin.Controllers.Core;
 using OCTO.Admin.Controllers.Interfaces;
 using OCTO.BLL.Interfaces.Contact;
+using System.Threading.Tasks;
 
 namespace OCTO.Admin.Controllers
 {
@@ -11,6 +13,11 @@ namespace OCTO.Admin.Controllers
         public ContactController(IContactService contactService)
         {
             _contactService = contactService;
+        }
+
+        public async Task<ActionResult> GetContactsAsync()
+        {
+            return CreateResponse(await _contactService.GetContactsAsync());
         }
     }
 }

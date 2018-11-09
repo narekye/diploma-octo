@@ -74,10 +74,17 @@ namespace OCTO.DAL.Core
             _dbContext.Set<TEntity>().RemoveRange(entities);
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> filter)
+        public virtual async Task<IEnumerable<TEntity>> GetByFilterAsync(IFilter<TEntity> filter, params Expression<Func<TEntity, object>>[] includes)
         {
             var entities = _dbContext.Set<TEntity>().AsQueryable();
+            entities = ApplyIncludes(entities, includes);
             return await filter.Apply(entities);
+        }
+
+        public virtual IQueryable<TEntity> ApplyIncludes(IQueryable<TEntity> query, params Expression<Func<TEntity, object>>[] includes)
+        {
+            query = includes.Aggregate(query, (current, navigationProperty) => current.Include(navigationProperty));
+            return query;
         }
     }
 }

@@ -1,7 +1,12 @@
 ﻿using AutoMapper;
 using OCTO.BLL.Core;
 using OCTO.BLL.Interfaces.Contact;
+using OCTO.BLL.Models;
+using OCTO.BLL.Models.Filters;
+using OCTO.DAL.Filters;
 using OCTO.DAL.Repositories.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OCTO.BLL.Contact
 {
@@ -14,6 +19,15 @@ namespace OCTO.BLL.Contact
         {
             _contactRepository = contactRepository;
             _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<ContactModel>> GetContactsAsync()
+        {
+            var filter = _mapper.Map<ContactFilter>(new ContactFilterModel()); // remove
+
+            var contacts = await _contactRepository.GetByFilterAsync(filter, x => x.Account, x => x.Salutation);
+
+            return _mapper.Map<IEnumerable<ContactModel>>(contacts);
         }
     }
 }
