@@ -28,25 +28,64 @@
 <!--</div>-->
 <!--</nav>-->
 <!--<div class="col-sm-4">-->
-  <!--<div class="bc-col-4">-->
-    <!--<button class="btn-primary">-->
-      <!--Click me-->
-    <!--</button>-->
-  <!--</div>-->
-  <!--<div class="bc-col-8">-->
-    <!--<router-outlet></router-outlet>-->
-  <!--</div>-->
+<!--<div class="bc-col-4">-->
+<!--<button class="btn-primary">-->
+<!--Click me-->
+<!--</button>-->
 <!--</div>-->
-<div class="row">
-  <div class="col-md-12">
-    Top bar
+<!--<div class="bc-col-8">-->
+<!--<router-outlet></router-outlet>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      Top bar
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-2">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-md-10">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+
   </div>
-  <div class="col-sm-2">
-    <app-sidebar></app-sidebar>
-  </div>
-  <div class="col-lg-10">
-    <router-outlet></router-outlet>
-  </div>
+</div>-->
+
+<div class="wrapper">
+
+    <div class="col-md-12">
+        <div class="col-md-2 padding0">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <div class="col-md-10 mian padding0">
+            <nav class="navbar navbar-default">
+                <div class="brand-centered">
+                    <a class="navbar-brand" href=""><img
+                            style="margin-right: 10px; padding: 0;"
+                            src="https://res.cloudinary.com/disputebills/image/upload/v1462474206/blue-mark_cnzgry.png"
+                            alt="Dispute Bills">OCTOWeb
+                    </a>
+                </div>
+                <div id="navbar9" class="navbar-collapse collapse">
+
+                </div>
+            </nav>
+
+            <div class="container">
+                <router-outlet></router-outlet>
+            </div>
+
+
+        </div>
+    </div>
 
 </div>
+
+
+
 
