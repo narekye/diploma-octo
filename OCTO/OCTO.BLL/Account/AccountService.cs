@@ -21,6 +21,19 @@ namespace OCTO.BLL.Account
             _mapper = mapper;
         }
 
+        public async Task<AccountModel> CreateAccountAsync(AccountModel accountModel)
+        {
+            await EnsureTransaction();
+
+            var account = _mapper.Map<DAL.Models.Account>(accountModel);
+            _accountRepository.Add(account);
+
+            await SaveChangesAsync();
+
+            var newAccount = await _accountRepository.FirstOrDefaultAsync(x => x.Id == account.Id);
+            return _mapper.Map<AccountModel>(newAccount);
+        }
+
         public async Task<AccountModel> GetAccountByIdAsync(int accountId)
         {
             var account = await _accountRepository.GetByIdAsync(accountId);

@@ -13,5 +13,9 @@ namespace OCTO.BLL.Models
         public string Phone { get; set; }
         public string Site { get; set; }
         public string Notes { get; set; }
+
+        public int AccountId { get; set; }
+
+        public int CountryId { get; set; }
     }
 }

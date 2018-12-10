@@ -63,6 +63,34 @@ namespace OCTO.DAL.Core
         {
             if (Transaction != null)
                 Transaction.Rollback();
+
+            _dbContext.ChangeTracker.DetectChanges();
+
+            if (!_dbContext.ChangeTracker.HasChanges())
+                return;
+
+            var entries = _dbContext.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged).ToList();
+
+            foreach (var entry in entries)
+            {
+                var entity = entry.Entity;
+
+                if (entity == null)
+                    continue;
+
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        var set = _dbContext.Remove(entity);
+                        break;
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        break;
+                    case EntityState.Modified:
+                        entry.Reload();
+                        break;
+                }
+            }
         }
 
         public async Task<int> SaveChangesAsync(bool commit = true)
@@ -92,7 +120,7 @@ namespace OCTO.DAL.Core
             catch (DbUpdateException ex)
             {
                 RollbackTransaction();
-                var entry = ex.Entries.First().Entity;
+                var entry = ex.Entries.FirstOrDefault()?.Entity;
                 string entryInfo = string.Empty;
 
                 //if (entry is IEntity iEntity)

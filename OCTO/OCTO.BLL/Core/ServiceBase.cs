@@ -41,10 +41,11 @@ namespace OCTO.BLL.Core
             }
         }
 
-        public void EnsureTransaction()
+        public Task EnsureTransaction()
         {
             if (DatabaseTransaction != null)
-                DatabaseTransaction.EnsureTransactionAsync();
+                return DatabaseTransaction.EnsureTransactionAsync();
+            return Task.FromResult(new object());
         }
 
         public void RollbackTransaction()
@@ -53,7 +54,7 @@ namespace OCTO.BLL.Core
                 DatabaseTransaction.RollbackTransaction();
         }
 
-        public Task<int> SaveChangesAsync(bool commit = false)
+        public Task<int> SaveChangesAsync(bool commit = true)
         {
             if (!IsSavingChanges) return Task.FromResult(-1);
 

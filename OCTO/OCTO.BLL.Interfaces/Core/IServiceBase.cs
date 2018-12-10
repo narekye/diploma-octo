@@ -13,10 +13,10 @@ namespace OCTO.BLL.Interfaces.Core
 
         IServiceBase Parent { get; set; }
 
-        void EnsureTransaction();
+        Task EnsureTransaction();
 
         void RollbackTransaction();
 
-        Task<int> SaveChangesAsync(bool commit = false);
+        Task<int> SaveChangesAsync(bool commit = true);
     }
 }

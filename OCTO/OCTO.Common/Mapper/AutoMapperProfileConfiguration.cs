@@ -11,6 +11,7 @@ namespace OCTO.Common.Mapper
         public AutoMapperProfileConfiguration()
         {
             CreateMap<Account, AccountModel>();
+            CreateMap<AccountModel, Account>();
             CreateMap<Contact, ContactModel>();
             CreateMap<Salutation, SalutationModel>();
 

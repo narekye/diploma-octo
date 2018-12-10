@@ -4,7 +4,6 @@ using OCTO.Admin.Controllers.Interfaces;
 using OCTO.BLL.Interfaces.Account;
 using OCTO.BLL.Models;
 using OCTO.BLL.Models.Filters;
-using System;
 using System.Threading.Tasks;
 
 namespace OCTO.Admin.Controllers
@@ -35,7 +34,8 @@ namespace OCTO.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateAccountAsync(AccountModel account)
         {
-            return CreateResponse(new object());
+            var newAccount = await _accountService.CreateAccountAsync(account);
+            return CreateResponse(newAccount);
         }
 
         [HttpGet]
