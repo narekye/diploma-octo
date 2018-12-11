@@ -2,6 +2,8 @@
 {
     public class AccountFilterModel
     {
-        
+        public int Id { get; set; }
+        public string Zip { get; set; }
+        public string Name { get; set; }
     }
 }
