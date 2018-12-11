@@ -15,7 +15,8 @@ namespace OCTO.Common.Mapper
             CreateMap<Contact, ContactModel>();
             CreateMap<Salutation, SalutationModel>();
 
-            CreateMap<AccountFilter, AccountFilterModel>();
+            // CreateMap<AccountFilter, AccountFilterModel>();
+            CreateMap<AccountFilterModel, AccountFilter>();
             CreateMap<ContactFilter, ContactFilterModel>();
         }
     }
