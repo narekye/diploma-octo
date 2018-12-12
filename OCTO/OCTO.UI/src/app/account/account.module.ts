@@ -10,6 +10,7 @@ import {CommonModule} from '@angular/common';
 import {AccountHeaderComponent} from './account-list/account-header/account-header.component';
 import {AccountEditComponent} from './account-edit/account-edit.component';
 import {FormsModule} from "@angular/forms";
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [

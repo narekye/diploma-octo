@@ -1,9 +1,9 @@
-<div class="row">
+<div>
   <app-account-filter (filterApplied)="onApplyFilter($event)"></app-account-filter>
   <app-account-list [accounts]="accounts | async"></app-account-list>
 </div>
 
-<div class="row">
+<div>
   <router-outlet></router-outlet>
 </div>
 

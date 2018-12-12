@@ -6,6 +6,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {OctoInterceptor} from './interceptor/httpConfig.interceptor';
 import {FormsModule} from "@angular/forms";
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import {FormsModule} from "@angular/forms";
     imports: [
         BrowserModule,
         HttpClientModule,
+        SharedModule,
         FormsModule,
         AppRoutingModule
     ],

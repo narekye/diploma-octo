@@ -1,16 +1,30 @@
-<div class="form-inline account_form" >
-  <div class="form-group">
-    <label for="userId">Id</label>
-    <input type="number" class="form-control" id="userId" [(ngModel)]="accountFilter.Id">
+<div class="panel panel-primary">
+  <div class="panel-heading">Filters</div>
+  <div class="panel-body">
+    <div class="form-inline account_form">
+      <div class="form-group">
+        <label for="userId">Id</label>
+        <input type="number" class="form-control" id="userId" [(ngModel)]="accountFilter.Id">
+      </div>
+      <div class="form-group">
+        <label for="accountName">Name</label>
+        <input type="text" class="form-control" id="accountName" [(ngModel)]="accountFilter.Name">
+      </div>
+      <div class="form-group">
+        <label for="userAddress">Address</label>
+        <input type="text" class="form-control" id="userAddress" [(ngModel)]="accountFilter.Address">
+      </div>
+      <div class="form-group">
+        <label for="userZip">Zip</label>
+        <input type="text" class="form-control" id="userZip" [(ngModel)]="accountFilter.Zip">
+      </div>
+      <div class="form-group">
+          <label for="accountCountry">Country</label>
+          <select [(ngModel)]="accountFilter.CountryId" id="accountCountry" class="form-control">
+              <option *ngFor="let country of countries" [value]="country.Id" >{{country.Name}}</option>
+          </select>
+      </div>
+      <button type="button" (click)="applyFilter()" class="btn-primary filter_button">Apply</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="userAddress">Address</label>
-    <input type="text" class="form-control" id="userAddress" [(ngModel)]="accountFilter.Address">
-  </div>
-  <div class="form-group">
-    <label for="userZip">Zip</label>
-    <input type="text" class="form-control" id="userZip">
-  </div>
-  <button type="button" (click)="applyFilter()" class="btn-primary filter_button">Apply</button>
 </div>
-
