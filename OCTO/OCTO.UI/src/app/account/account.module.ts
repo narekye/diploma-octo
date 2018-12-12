@@ -9,6 +9,7 @@ import {AccountItemComponent} from './account-list/account-item/account-item.com
 import {CommonModule} from '@angular/common';
 import {AccountHeaderComponent} from './account-list/account-header/account-header.component';
 import {AccountEditComponent} from './account-edit/account-edit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AccountEditComponent} from './account-edit/account-edit.component';
   providers: [AccountService],
   imports: [
     AccountRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class AccountModule {

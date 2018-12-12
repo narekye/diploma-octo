@@ -3,7 +3,7 @@
   <tr app-account-header></tr>
   </thead>
   <tbody *ngIf="accounts !== null && !accounts.HasError">
-  <tr app-account-item *ngFor="let item of accounts?.Data" [account]="item"></tr>
+  <tr app-account-item *ngFor="let item of accounts?.Data" [account]="item" class="account_table"></tr>
   </tbody>
 </table>
 

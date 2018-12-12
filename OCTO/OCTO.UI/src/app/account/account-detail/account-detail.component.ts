@@ -26,4 +26,8 @@ export class AccountDetailComponent implements OnInit {
       })
     })
   }
+
+  public onSubmit() : void {
+
+  }
 }

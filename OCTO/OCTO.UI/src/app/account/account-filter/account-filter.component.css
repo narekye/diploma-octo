@@ -3,3 +3,36 @@ ul {
 }
 
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.account_form{
+  border: 1px solid #dddddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.account_form .form-group
+{
+  text-align: center;
+  margin: 8px;
+}
+.account_form .form-group label{
+  margin-right:8px;
+}
+.filter_button{
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  padding: 5px 21px;
+  border-radius: 12px;
+  outline: none;
+}
+  @media (min-width: 768px) {
+    .form-inline .form-control {
+      display: block;
+    }
+  }

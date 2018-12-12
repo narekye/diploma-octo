@@ -1,12 +1,16 @@
-<div>
-  <ul>
-    <li class="col-sm-2"></li>
-    <li class="col-sm-2"></li>
-    <li class="col-sm-2"></li>
-    <li class="col-sm-2"></li>
-    <li class="col-sm-2"></li>
-    <li class="col-sm-2"></li>
-  </ul>
-  <button (click)="applyFilter($event)" class="btn-primary">Click me</button>
+<div class="form-inline account_form" >
+  <div class="form-group">
+    <label for="userId">Id</label>
+    <input type="number" class="form-control" id="userId" [(ngModel)]="accountFilter.Id">
+  </div>
+  <div class="form-group">
+    <label for="userAddress">Address</label>
+    <input type="text" class="form-control" id="userAddress" [(ngModel)]="accountFilter.Address">
+  </div>
+  <div class="form-group">
+    <label for="userZip">Zip</label>
+    <input type="text" class="form-control" id="userZip">
+  </div>
+  <button type="button" (click)="applyFilter()" class="btn-primary filter_button">Apply</button>
 </div>
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AccountService} from './account.service';
 import {Observable} from 'rxjs';
 import {AccountListComponent} from './account-list/account-list.component';
+import {AccountFilterModel} from "../shared/models/accout-filter.model";
 
 @Component({
   selector: 'app-account',
@@ -20,7 +21,8 @@ export class AccountComponent implements OnInit {
 
   }
 
-  public onApplyFilter() {
-    this.accounts = this.accountService.getAccounts();
+  public onApplyFilter(accountFilter: AccountFilterModel) {
+    this.accounts = this.accountService.getAccountsByFillter(accountFilter);
+    console.log(this.accounts);
   }
 }

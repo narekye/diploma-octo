@@ -1,5 +1,5 @@
 <div class="row">
-  <app-account-filter (filterApplied)="onApplyFilter()"></app-account-filter>
+  <app-account-filter (filterApplied)="onApplyFilter($event)"></app-account-filter>
   <app-account-list [accounts]="accounts | async"></app-account-list>
 </div>
 
