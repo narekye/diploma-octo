@@ -2,8 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using OCTO.BLL.Account;
 using OCTO.BLL.Contact;
+using OCTO.BLL.Country;
 using OCTO.BLL.Interfaces.Account;
 using OCTO.BLL.Interfaces.Contact;
+using OCTO.BLL.Interfaces.Country;
 using OCTO.BLL.Interfaces.Salutation;
 using OCTO.BLL.Salutation;
 using OCTO.DAL.Models;
@@ -22,12 +24,15 @@ namespace OCTO.Common
             services.AddTransient<ISalutationService, SalutationService>();
 
             services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<ICountryService, CountryService>();
 
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IContactService, ContactService>();
 
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<IAccountService, AccountService>();
+
+            
 
             return services;
         }

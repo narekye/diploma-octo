@@ -15,14 +15,18 @@ namespace OCTO.DAL.Filters
 
         public int? CountryId { get; set; }
 
+        public string Zip { get; set; }
+
         public async Task<IEnumerable<Account>> Apply(IQueryable<Account> query)
         {
             if (Id.HasValue)
-                query = query.Where(x => x.Id == Id);
+                query = query.Where(x => x.Id == Id.Value);
             if (!string.IsNullOrWhiteSpace(Name))
-                query = query.Where(x => x.Name == Name);
+                query = query.Where(x => x.Name == Name || x.Name.Contains(Name));
             if (CountryId.HasValue)
-                query = query.Where(x => x.CountryId == CountryId);
+                query = query.Where(x => x.CountryId == CountryId.Value);
+            if (!string.IsNullOrWhiteSpace(Zip))
+                query = query.Where(x => x.Zip == Zip);
 
             return await query.ToListAsync();
         }
