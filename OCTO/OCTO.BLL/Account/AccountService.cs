@@ -54,5 +54,24 @@ namespace OCTO.BLL.Account
             var accounts = await _accountRepository.GetByFilterAsync(accountFilter);
             return _mapper.Map<IEnumerable<AccountModel>>(accounts);
         }
+
+        public async Task DeleteAccountById(int accountId)
+        {
+            if (accountId == 0)
+            {
+                // throw error
+            }
+
+            await EnsureTransaction();
+
+            var entity = await _accountRepository.GetByIdAsync(accountId);
+
+            if (entity != null)
+                _accountRepository.Remove(entity);
+            else
+                RollbackTransaction();
+
+            await SaveChangesAsync();
+        }
     }
 }

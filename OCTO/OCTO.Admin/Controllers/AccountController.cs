@@ -44,5 +44,13 @@ namespace OCTO.Admin.Controllers
             var account = await _accountService.GetAccountByIdAsync(accountId);
             return CreateResponse(account);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteAccountByIdAsync([FromQuery] int accountId)
+        {
+            await _accountService.DeleteAccountById(accountId);
+            return CreateResponse(new object());
+        }
+        
     }
 }
