@@ -4,23 +4,40 @@
             <div class="row">
                 <div class="col-md-3">
                     <label for="name">Name</label>
-                    <input type="text"
-                           class="form-control"
-                           id="name"
-                           name="Name"
-                           #Name="ngModel" required [(ngModel)]="account.Name">
-                    <div [hidden]="Name.valid || Name.pristine"
-                         class="alert alert-danger">
+                    <input type="text" class="form-control" id="name" name="Name" #Name="ngModel" required [(ngModel)]="account.Name">
+                    <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                         Name is required
                     </div>
                 </div>
                 <div class="col-md-3">
                     <label for="addressLine">Address Line</label>
-                    <input type="text"
-                           class="form-control"
-                           id="addressLine"
-                           name="AddressLine"
-                           #AddressLine="ngModel" required [(ngModel)]="account.AddressLine">
+                    <input type="text" class="form-control" id="addressLine" name="AddressLine" #AddressLine="ngModel"
+                        required [(ngModel)]="account.AddressLine">
+
+                </div>
+                <div class="col-md-3">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" name="Zip" #Zip="ngModel" required [(ngModel)]="account.Zip">
+
+                </div>
+                <div class="col-md-3">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" #Phone="ngModel" required
+                        [(ngModel)]="account.Phone">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="accountCountry">Country</label>
+                    <select [(ngModel)]="account.CountryId" id="accountCountry" name="countryId" required #CountryId
+                        class="form-control">
+                        <option *ngFor="let country of countries" [value]="country.Id">{{country.Name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="site">Site</label>
+                    <input type="text" class="form-control" id="site" name="site" #Site="ngModel" [(ngModel)]="account.Site">
 
                 </div>
             </div>

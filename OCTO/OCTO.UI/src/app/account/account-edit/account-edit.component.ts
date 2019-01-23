@@ -11,14 +11,6 @@ export class AccountEditComponent implements OnInit {
   public currentAccount;
   private id: number;
 
-  // get id(): number {
-  //   return this.id;
-  // }
-  //
-  // set id(value: number) {
-  //   this.id = value;
-  // }
-
   constructor(private activatedRoute: ActivatedRoute,
               private accountService: AccountService) {
 
@@ -27,14 +19,11 @@ export class AccountEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      console.log(this.id);
       this.getCurrentAccount();
     });
   }
 
   private getCurrentAccount() {
-    this.accountService.getAccountById(this.id).subscribe(response => {
-      console.log(response);
-    });
+    this.accountService.getAccountById(this.id).subscribe(response => { });
   }
 }

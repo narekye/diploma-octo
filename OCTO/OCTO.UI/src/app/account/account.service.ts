@@ -28,7 +28,7 @@ export class AccountService {
             console.log(response);
         });
     }
-    public addAccount(account) {
+    public addAccount(account: AccountModel) {
         return this.http.post(environment.octoURL + '/Account/CreateAccountAsync', account).subscribe(response => {
             console.log(response);
         });
