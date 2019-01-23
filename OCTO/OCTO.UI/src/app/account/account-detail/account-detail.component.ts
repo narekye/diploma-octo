@@ -19,15 +19,20 @@ export class AccountDetailComponent implements OnInit {
 
       let idOfAccount = +params['id'];
 
+      if(idOfAccount === 0){
+        this.account = new AccountModel();
+        return;
+      }
+
       this.accountService.getAccountById(idOfAccount).subscribe(account => {
         if (!account.HasError && account.Data) {
           this.account = account.Data;
         }
-      })
-    })
+      });
+    });
   }
 
-  public onSubmit() : void {
+  public onSubmit(): void {
 
   }
 }

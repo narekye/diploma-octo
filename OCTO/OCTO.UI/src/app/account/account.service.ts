@@ -22,4 +22,15 @@ export class AccountService {
     public getAccountsByFillter(accountFillter: AccountFilterModel) {
         return this.http.post(environment.octoURL + '/Account/GetAccountsByFilterAsync', accountFillter);
     }
+
+    public deleteAccountById(id: number) {
+        return this.http.delete(environment.octoURL + '/Account/DeleteAccountByIdAsync?accountId=' + id).subscribe(response => {
+            console.log(response);
+        });
+    }
+    public addAccount(account) {
+        return this.http.post(environment.octoURL + '/Account/CreateAccountAsync', account).subscribe(response => {
+            console.log(response);
+        });
+    }
 }

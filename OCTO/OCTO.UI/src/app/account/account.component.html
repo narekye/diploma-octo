@@ -1,4 +1,6 @@
 <div>
+  <button type="button" (click)="addNewAccount()" class="btn btn-primary add-account">Add New Account</button>
+
   <app-account-filter (filterApplied)="onApplyFilter($event)"></app-account-filter>
   <app-account-list [accounts]="accounts | async"></app-account-list>
 </div>

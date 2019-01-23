@@ -16,7 +16,6 @@ ul {
 }
 .account_form .form-group
 {
-  text-align: center;
   margin: 8px;
 }
 .account_form .form-group label{
@@ -30,6 +29,7 @@ ul {
   border-radius: 12px;
   outline: none;
 }
+
   @media (min-width: 768px) {
     .form-inline .form-control {
       display: block;
