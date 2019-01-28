@@ -2,8 +2,9 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
-  {path: 'account', loadChildren: './account/account.module#AccountModule'},
-  {path: 'contact', loadChildren: './contact/contact.module#ContactModule'}
+  {path: 'accounts', loadChildren: './account/account.module#AccountModule'},
+  {path: 'contacts', loadChildren: './contact/contact.module#ContactModule'},
+  {path: 'tasks', loadChildren: './task/task.module#TaskModule'}
 ];
 
 @NgModule({

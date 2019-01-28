@@ -25,7 +25,7 @@ namespace OCTO.Admin.Middlewares
             }
         }
 
-        static Task HandleException(HttpContext context, Exception ex)
+        Task HandleException(HttpContext context, Exception ex)
         {
             var model = new ResponseWrapper<object>
             {

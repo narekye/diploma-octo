@@ -8,7 +8,7 @@
                     <div [hidden]="Name.valid || Name.pristine" class="alert alert-danger">
                         Name is required
                     </div>
-                </div>
+                </div>               
                 <div class="col-md-3">
                     <label for="addressLine">Address Line</label>
                     <input type="text" class="form-control" id="addressLine" name="AddressLine" #AddressLine="ngModel"
@@ -42,6 +42,6 @@
                 </div>
             </div>
         </div>
-        <button [disabled]="!accountForm.form.valid" class="btn btn-primary">Submit</button>
+        <button [disabled]="!accountForm.form.valid" class="btn btn-primary" [ngClass]="{'btn-success': accountForm.form.valid}">Save Changes</button>
     </form>
 </div>
